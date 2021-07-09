@@ -1,26 +1,48 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div>
+
+  <button id="btn" @click.right.prevent="" @mousedown.right.prevent="clickdown" @mouseup.right.prevent="clickup">Hold Me 1.5 for Seconds</button>
+</div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+  },
+
+data(){
+return{
+  timeId:0,
+}
+},
+methods:{
+  clickdown(){
+    // console.log(event)
+
+    this.timeId = setTimeout(function(){
+     alert("1.5 ثانیه کلیک را نگه داشتید")
+    },1500)
+  },
+  clickup(){
+clearTimeout(this.timeId)
   }
+
+}
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  div{
+    text-align: center;
+  }
+#btn{
+  padding: 10px;
+  margin-top: 200px;
+  background-color: rgb(142, 135, 206);
+
+
 }
 </style>
